@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 export default function AppNav() {
   return (
     <nav className={styles.nav}>
-      App Navigation
       <ul>
         <li>
           <NavLink to="cities">Cities</NavLink>

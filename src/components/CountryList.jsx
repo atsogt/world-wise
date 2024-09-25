@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "./Spinner";
-import styles from "./CityList.module.css";
+import styles from "./CountryList.module.css";
 import CityItem from "./CityItem";
 import Message from "./Message";
 
-export default function CityList({ cities, isLoading }) {
+export default function CountryList({ cities, isLoading }) {
   if (isLoading) {
     return <Spinner />;
   }
@@ -16,7 +16,7 @@ export default function CityList({ cities, isLoading }) {
   }
 
   return (
-    <ul className={styles.cityList}>
+    <ul className={styles.countryList}>
       {cities.map((city) => (
         <CityItem key={city.id} city={city} />
       ))}
