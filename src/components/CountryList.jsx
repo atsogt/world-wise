@@ -15,10 +15,14 @@ export default function CountryList({ cities, isLoading }) {
     );
   }
 
+  const countries = cities.reduce((arr, city) => {
+    // if(arr.map(el => el.city).includes(city.country))
+  }, []);
+
   return (
     <ul className={styles.countryList}>
-      {cities.map((city) => (
-        <CityItem key={city.id} city={city} />
+      {countries.map((country) => (
+        <CityItem key={county} country={country.id} />
       ))}
     </ul>
   );

@@ -7,11 +7,7 @@ import Login from "./pages/Login";
 import AppLayout from "./pages/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
 import CityList from "./components/CityList";
-
-//routes <-- client-side routing
-// /
-// /login
-// /app
+import CountryList from "./components/CountryList";
 
 export default function App() {
   const [cities, setCities] = useState([]);
@@ -52,7 +48,7 @@ export default function App() {
           <Route
             path="countries"
             element={
-              <CityList cities={cities} isLoading={isLoading} />
+              <CountryList cities={cities} isLoading={isLoading} />
             }></Route>
           <Route path="form" element={<p>Form</p>}></Route>
         </Route>
