@@ -3,6 +3,7 @@ import Spinner from "./Spinner";
 import styles from "./CountryList.module.css";
 import CityItem from "./CityItem";
 import Message from "./Message";
+import CountryItem from "./CountryItem";
 
 export default function CountryList({ cities, isLoading }) {
   if (isLoading) {
@@ -11,18 +12,25 @@ export default function CountryList({ cities, isLoading }) {
 
   if (!cities.length) {
     return (
-      <Message message="Add your first city by clicking on your city on the map" />
+      <Message message="Add your first country by clicking on your country on the map" />
     );
   }
 
-  const countries = cities.reduce((arr, city) => {
-    // if(arr.map(el => el.city).includes(city.country))
+  console.log(cities);
+
+  const countries = cities.reduce((acc, city) => {
+    if (!acc.map((el) => el.country).includes(city.country)) {
+      return [...acc, { country: city.country, emoji: city.emoji }];
+    } else {
+      return acc;
+    }
   }, []);
+  // const countries = [];
 
   return (
     <ul className={styles.countryList}>
       {countries.map((country) => (
-        <CityItem key={county} country={country.id} />
+        <CountryItem key={country.id} country={country} />
       ))}
     </ul>
   );
