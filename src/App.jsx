@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 //components/page
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
@@ -44,6 +44,10 @@ export default function App() {
         <Route path="app" element={<AppLayout />}>
           <Route
             index
+            // path="cities"
+            element={<Navigate to="cities" replace />}
+          />
+          <Route
             path="cities"
             element={<CityList cities={cities} isLoading={isLoading} />}
           />
