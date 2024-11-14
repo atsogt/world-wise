@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
-import styles from "./CityItem.module.css";
-import React from "react";
+import { Link } from "react-router-dom"
+import styles from "./CityItem.module.css"
+import React from "react"
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
     month: "long",
     year: "numeric",
-  }).format(new Date(date));
+  }).format(new Date(date))
 
 export default function CityItem({ city }) {
-  console.log(city);
-  const { cityName, emoji, date, id, position } = city;
+  console.log(city)
+  const { cityName, emoji, date, id, position } = city
   return (
     <li>
       <Link
@@ -23,5 +23,5 @@ export default function CityItem({ city }) {
         <button className={styles.deleteBtn}>&times;</button>
       </Link>
     </li>
-  );
+  )
 }
