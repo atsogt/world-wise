@@ -1,30 +1,33 @@
-import React, { useEffect, useState } from "react";
-import Spinner from "./Spinner";
-import styles from "./CountryList.module.css";
-import CityItem from "./CityItem";
-import Message from "./Message";
-import CountryItem from "./CountryItem";
+import React, { useEffect, useState } from "react"
+import Spinner from "./Spinner"
+import styles from "./CountryList.module.css"
+import CityItem from "./CityItem"
+import Message from "./Message"
+import CountryItem from "./CountryItem"
+import { useCities } from "../contexts/CitiesContext"
 
-export default function CountryList({ cities, isLoading }) {
+export default function CountryList() {
+  const { cities, isLoading } = useCities()
+
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   if (!cities.length) {
     return (
-      <Message message="Add your first country by clicking on your country on the map" />
-    );
+      <Message message='Add your first country by clicking on your country on the map' />
+    )
   }
 
-  console.log(cities);
+  console.log(cities)
 
   const countries = cities.reduce((acc, city) => {
     if (!acc.map((el) => el.country).includes(city.country)) {
-      return [...acc, { country: city.country, emoji: city.emoji }];
+      return [...acc, { country: city.country, emoji: city.emoji }]
     } else {
-      return acc;
+      return acc
     }
-  }, []);
+  }, [])
   // const countries = [];
 
   return (
@@ -33,5 +36,5 @@ export default function CountryList({ cities, isLoading }) {
         <CountryItem key={country.id} country={country} />
       ))}
     </ul>
-  );
+  )
 }

@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
-import Spinner from "./Spinner";
-import styles from "./CityList.module.css";
-import CityItem from "./CityItem";
-import Message from "./Message";
+import React, { useEffect, useState } from "react"
+import Spinner from "./Spinner"
+import styles from "./CityList.module.css"
+import CityItem from "./CityItem"
+import Message from "./Message"
+import { CitiesProvider, useCities } from "../contexts/CitiesContext"
 
-export default function CityList({ cities, isLoading }) {
+export default function CityList() {
+  const { cities, isLoading } = useCities()
+
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   if (!cities.length) {
     return (
-      <Message message="Add your first city by clicking on your city on the map" />
-    );
+      <Message message='Add your first city by clicking on your city on the map' />
+    )
   }
 
   return (
@@ -21,5 +24,5 @@ export default function CityList({ cities, isLoading }) {
         <CityItem key={city.id} city={city} />
       ))}
     </ul>
-  );
+  )
 }
